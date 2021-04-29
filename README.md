@@ -3,4 +3,4 @@ A simple web application using MySQL, Express and Angular for managing hotel res
 INSTRUCTIONS
   
 running the app: npm start in tin-server dir and npm install -g @angular/cli then ng serve in tin-angular dir
-in order to use admin account(has some extra permissions): email: root@gmail.com password: 12345678
+in order to use admin account(has some extra permissions): email: root@gmail.com password: 12345678 (allowing to create new categories and delete them on /home path)
