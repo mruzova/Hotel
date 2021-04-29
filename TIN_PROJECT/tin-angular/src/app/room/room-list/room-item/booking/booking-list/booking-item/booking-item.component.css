@@ -1,0 +1,42 @@
+.booking-field {
+    display: flex;
+}
+
+.field {
+    margin-top: 20px;
+}
+
+.buttons button {
+    margin-right: 10px;
+}
+
+.price {
+    font-weight: 900;
+}
+
+.dates {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.doa,
+.dod {
+    margin-bottom: 10px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+.buttons p {
+    margin-top: 10px;
+}
+
+::placeholder {
+    color: black;
+}
+
+input {
+    text-align: center;
+}

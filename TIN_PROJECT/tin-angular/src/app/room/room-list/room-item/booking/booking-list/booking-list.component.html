@@ -1,0 +1,5 @@
+<div>
+    <div>
+        <app-booking-item *ngFor="let booking of reservations; let i = index;" [index]="i" [booking]="booking" (oldBooking)="deleteBooking(reservations[i])"></app-booking-item>
+    </div>
+</div>

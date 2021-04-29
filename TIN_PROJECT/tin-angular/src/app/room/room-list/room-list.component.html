@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <app-room-item *ngFor="let room of rooms; let i = index;" [index]="i" [room]="room" (click)="setIdRoom(i)"></app-room-item>
+    </div>
+</div>
+<div class="pag">
+    <nav aria-label="...">
+        <ul class="pagination pagination-lg">
+            <li class="page-item" *ngFor="let p of pages; let i = index;">
+                <a class="page-link" [class.page-a]="currentPage === i+1" tabindex="-1" (click)="onGetRooms(i+1)">{{i+1}}</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,18 @@
+.pag {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.page-a {
+    border: 2px solid blueviolet;
+}
+
+.cat {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+app-category-add {
+    width: 30%;
+}

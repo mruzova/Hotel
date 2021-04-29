@@ -1,0 +1,33 @@
+.navbar-custom {
+    background: rgb(109, 142, 247);
+}
+
+a {
+    color: white;
+    cursor: pointer;
+}
+
+.header-custom {
+    display: flex;
+    justify-content: center;
+}
+
+.hotel-link:hover,
+.logout:hover,
+.manage:active {
+    color: rgb(202, 214, 255);
+}
+
+.logout {
+    font-size: 19px;
+}
+
+.dropdown-item {
+    color: black;
+}
+
+.right {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 20px;
+}

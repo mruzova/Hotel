@@ -1,0 +1,19 @@
+<div class="list-group-item field">
+    <div class="room-field">
+        <div class="text-part">
+            <p [(ngModel)]="roomType" ngDefaultControl>Room Type: {{roomType}} </p>
+            <p [(ngModel)]="sizeType" ngDefaultControl>Room Size: {{sizeType}}</p>
+            <p [(ngModel)]="numberOfBeds" ngDefaultControl>Number of Beds: {{numberOfBeds}}</p>
+            <p [(ngModel)]="floor" ngDefaultControl>Floor: {{floor}}</p>
+            <p [(ngModel)]="pricePerNight" ngDefaultControl class="price">Price per Night: {{pricePerNight}}$</p>
+            <button class="btn btn-success" type="button" (click)="onBook()">Book Now!</button>
+            <div *ngIf="show" style="margin-top: 30px; margin-bottom: 30px;">
+                <app-booking [room]="room"></app-booking>
+            </div>
+        </div>
+        <div class="image-part">
+            <img [(ngModel)]="imageUrl" ngDefaultControl src="{{imageUrl}}" alt="hotel room">
+        </div>
+    </div>
+
+</div>

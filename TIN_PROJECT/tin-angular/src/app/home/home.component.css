@@ -1,0 +1,13 @@
+.app-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-right: 5vw;
+}
+
+.auth p {
+    margin-top: 20px;
+    text-align: center;
+    background: rgb(194, 227, 255);
+    ;
+}

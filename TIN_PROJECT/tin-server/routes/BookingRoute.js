@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { validationRules, validate } = require('../validators/bookingValidator');
+const api = require('../api/BookingApi');
+router.get('/', api.getReservations);
+router.get('/:idUser', api.getReservationsByGuest);
+router.post('/', validationRules(), validate, api.createBooking);
+router.put('/:idBooking', validationRules(), validate, api.updateBooking);
+router.delete('/:idBooking', api.deleteBooking);
+module.exports = router;

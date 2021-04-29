@@ -1,0 +1,13 @@
+<div class="app-view">
+    <div class="category">
+        <app-category></app-category>
+    </div>
+
+    <div class="auth" *ngIf="!tokenService.hasToken">
+        <app-auth>
+
+        </app-auth>
+        <p class="list-group-item">In order to see the prices and book a room, please Log In:)</p>
+    </div>
+
+</div>

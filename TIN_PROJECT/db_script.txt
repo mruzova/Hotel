@@ -1,0 +1,123 @@
+create schema TIN_project;
+
+
+
+CREATE TABLE TIN_project.booking (
+    idBooking int  NOT NULL,
+    idGuest int  NOT NULL,
+    dateOfArrival date  NOT NULL,
+    dateOfDeparture date  NOT NULL,
+    idRoom int  NOT NULL,
+    CONSTRAINT booking_pk PRIMARY KEY  (idBooking)
+);
+
+
+CREATE TABLE TIN_project.category (
+    idCategory int  NOT NULL,
+    numberOfBeds int  NOT NULL,
+    roomType varchar(300)  NOT NULL,
+    sizeType varchar(40)  NOT NULL,
+    CONSTRAINT category_pk PRIMARY KEY  (idCategory)
+);
+
+
+
+CREATE TABLE TIN_project.guest (
+    idGuest int  NOT NULL,
+    firstName varchar(30)  NULL,
+    lastName varchar(30)  NULL,
+    dateOfBirth date  NULL,
+    country varchar(30)  NULL,
+    city varchar(30)   NULL,
+    email varchar(30)  NOT NULL,
+    CONSTRAINT guest_pk PRIMARY KEY  (idGuest)
+);
+
+
+CREATE TABLE TIN_project.room (
+    idRoom int  NOT NULL,
+    idCategory int  NOT NULL,
+    roomNumber int  NOT NULL,
+    pricePerNight int  NOT NULL,
+    CONSTRAINT room_pk PRIMARY KEY  (idRoom)
+);
+CREATE TABLE TIN_project.users (
+    idUser int  NOT NULL AUTO_INCREMENT,
+    name varchar(255)  NOT NULL,
+    email varchar(255)  NOT NULL,
+    password varchar(255)  NOT NULL,
+    created_at datetime  NOT NULL,
+    updated_at datetime  NOT NULL,
+    CONSTRAINT users_pk PRIMARY KEY (idUser)
+);
+
+
+
+ALTER TABLE TIN_project.booking ADD CONSTRAINT booking_guest
+    FOREIGN KEY (idGuest)
+    REFERENCES guest (idGuest);
+alter table TIN_project.booking
+add constraint booking_room
+   foreign key (idRoom)
+   references room(idroom)
+   on delete cascade;
+
+
+ALTER TABLE TIN_project.room ADD CONSTRAINT room_category
+    FOREIGN KEY (idCategory)
+    REFERENCES category (idCategory);
+
+ALTER TABLE TIN_project.users Add UNIQUE INDEX `email_UNIQUE` (`email` ASC);
+alter table TIN_project.guest
+	add constraint guest_users__fk
+		foreign key (email) references users (email)
+			on update cascade on delete cascade;
+
+alter table TIN_project.category add imagePlanUrl varchar(15000)  null;
+alter table TIN_project.room
+	add imageUrl varchar(15000) not null;
+
+SET FOREIGN_KEY_CHECKS = 0;
+alter table TIN_project.category modify idCategory INT AUTO_INCREMENT;
+alter table TIN_project.booking modify idBooking INT AUTO_INCREMENT;
+alter table TIN_project.room modify idRoom INT AUTO_INCREMENT;
+alter table TIN_project.guest modify idGuest INT AUTO_INCREMENT;
+SET FOREIGN_KEY_CHECKS = 1;
+
+alter table TIN_project.users
+	add is_admin boolean not null;
+
+
+insert into tin_project.users (idUser, name, email, password, created_at, updated_at,is_admin) values (1, 'root', 'root@gmail.com', 'f4bb31e16e693dd15ec3f85b03599f1fe2344e6d79767ec8e92ec3bf6513039a68544bab9919085eb156b8741bec8d714f9d76b88dc8641bb45b38d91e4860c8776da09d2208ce42411cc2af3d02782747cdc86c4aff4763d0aeb32ada18cab0068240a4c0ad1a00', '2021-01-30 22:56:57', '2021-01-30 22:56:57',1);
+insert into tin_project.users (idUser, name, email, password, created_at, updated_at,is_admin) values (2, 'mruzova', 'maryiaruzava@gmail.com', '141c36c7d30bcd127e6ca9019f9861082b5f821e5c843b58a4285806bf99dafb3f948cb3723c5e8bb359720ab50f4074cf05a9f4058cb537fe319566208ea5e117e3e1961e00809ecf990bb46ebf1cf4b2e12e33c6da366ae764cb12408ff46afa76d7e4d0e2e832', '2021-01-30 23:04:49', '2021-01-30 23:04:49',0);
+
+insert into tin_project.guest (idGuest, firstName, lastName, dateOfBirth, country, city, email) values (1, 'Root', 'Rootovich', '2000-10-10', 'Rootland', 'Rootcity', 'root@gmail.com');
+insert into tin_project.guest (idGuest, firstName, lastName, dateOfBirth, country, city, email) values (2, 'Maryia', 'Ruzava', '2001-02-27', 'Belarus', 'Minsk', 'maryiaruzava@gmail.com');
+
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (1, 1, 'luxury suite', 'double', 'https://apartments.naproperties.com/ohio/cincinnati/encore-apartments//img/floor-plans/one-bedroom-den-b5--plan.png');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (2, 1, 'junior suite', 'single', 'https://www.homestratosphere.com/wp-content/uploads/2019/11/KIDS-BEDROOM-25-nov292019-min.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (3, 1, 'studio', 'double', 'https://i.pinimg.com/736x/11/87/04/1187041a7c83c77c6f36175d3835295b.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (4, 3, 'connecting rooms', 'triple', 'https://idighardware.com/wp-content/uploads/2015/11/Communicating-Door.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (5, 2, 'adjoining rooms', 'quad', 'https://s3.amazonaws.com/gazelle.cdn.yolocare.com/sites/448/2019/02/04174905/sonoma-1000x-2bed.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (6, 1, 'king', 'double', 'https://i.pinimg.com/originals/bb/7f/34/bb7f34d2bcc8676944eb788a3f6df0e7.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (7, 2, 'twin', 'double', 'https://i.pinimg.com/originals/7f/a5/3d/7fa53df560457543eeec3efd7b3acecc.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (8, 4, 'master suite', 'quad+', 'https://i.pinimg.com/originals/17/51/37/17513708d2331992a38ed8b3921c5f8f.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (9, 2, 'luxury suite', 'quad', 'https://statesmanapartments.com/wp-content/uploads/E-2-bed-2-bath-1237-2.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (10, 1, 'master suite', 'double', 'https://i.pinimg.com/originals/8b/8d/3a/8b8d3a8a589a00fd639012ab24cd62d9.jpg');
+insert into tin_project.category (idCategory, numberOfBeds, roomType, sizeType, imagePlanUrl) values (12, 3, 'master suite', 'triple', 'https://cdn.jhmrad.com/wp-content/uploads/room-floor-plan-withal-cute-addition_62991.jpg');
+
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (1, 1, 101, 400, 'https://www.47luxurysuites.it/en/wp-content/uploads/2018/11/trevi-9-min-min-1.jpg');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (2, 2, 103, 80, 'https://hotel-geography.com/storage/web/cache/1/A45Lymd5eiqEig_lECW7xV7TBxTjzu0e.jpg?s=6d1be6d242d2140cf0fd1a44d35a591d');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (3, 3, 201, 150, 'https://www.kasahotelparota.com/img/rooms/rooms-details-slides/studio-kitchen/tulum-luxury-studio-2x.jpg');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (4, 4, 202, 150, 'https://www.citinpratunam.com/wp-content/uploads/2019/08/Citin_Pratunam_Connecting_Room4.jpg');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (5, 5, 203, 160, 'https://pix10.agoda.net/hotelImages/546/546513/546513_17052914200053295884.jpg');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (6, 6, 301, 100, 'https://roomshotels.com/wp-content/uploads/2016/11/rooms-hotel-tbilisi-terrace-king-room-R-r.jpg');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (7, 7, 302, 90, 'https://pix10.agoda.net/hotelImages/217/2170887/2170887_17042114570052536814.jpg?s=1024x768');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (8, 8, 303, 400, 'https://i2.wp.com/thepointsguy.com/wp-content/uploads/2019/07/homewood-suites.jpg?fit=1280%2C855px&ssl=1');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (9, 9, 403, 580, 'https://images.trvl-media.com/hotels/20000000/19270000/19266200/19266119/efb0110b.jpg?impolicy=fcrop&w=1200&h=800&p=1&q=medium');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (10, 10, 501, 140, 'https://media-cdn.tripadvisor.com/media/photo-s/0d/d4/29/aa/guest-room-master-suite.jpg');
+insert into tin_project.room (idRoom, idCategory, roomNumber, pricePerNight, imageUrl) values (11, 12, 502, 200, 'https://cdn.galaxy.tf/unit-media/tc-default/uploads/images/room_photo/001/552/348/sala-master-standard.jpg');
+
+insert into tin_project.booking (idBooking, idGuest, dateOfArrival, dateOfDeparture, idRoom) values (1, 1, '2021-02-11', '2021-02-12', 1);
+insert into tin_project.booking (idBooking, idGuest, dateOfArrival, dateOfDeparture, idRoom) values (2, 2, '2021-02-19', '2021-02-21', 2);
+insert into tin_project.booking (idBooking, idGuest, dateOfArrival, dateOfDeparture, idRoom) values (3, 2, '2021-03-19', '2021-03-20', 2);

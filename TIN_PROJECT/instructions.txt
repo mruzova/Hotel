@@ -1,0 +1,2 @@
+running the app: npm start in tin-server dir and npm install -g @angular/cli then ng serve in tin-angular dir
+admin: email: root@gmail.com password: 12345678

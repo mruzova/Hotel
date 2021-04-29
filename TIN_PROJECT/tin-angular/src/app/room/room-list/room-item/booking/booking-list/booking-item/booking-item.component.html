@@ -1,0 +1,31 @@
+<div class="list-group-item field container">
+    <div class="booking-field">
+        <app-alert [message]="error" (close)="onHandleError()" *ngIf="error"></app-alert>
+        <div class="col col-lg-9 mx-auto">
+
+            <div class="dates">
+                <div class="doa">
+                    <label for="doa">Date of Arrival: </label>
+                    <input type="text" id="doa" name="doa" [(ngModel)]="doa" ngDefaultControl placeholder="{{doa}}" onfocus="(this.type='date')" onblur="(this.type='text')">
+                </div>
+
+                <div class=" dod ">
+                    <label for="dod ">Date of Departure: </label>
+                    <input type="text " id="dod " name="dod " [(ngModel)]="dod" ngDefaultControl placeholder="{{dod}} " onfocus="(this.type='date' ) " onblur="(this.type='text')">
+                </div>
+            </div>
+
+            <p [(ngModel)]="roomNumber" ngDefaultControl>Room Number: {{roomNumber}} </p>
+            <p class="price" [(ngModel)]="pricePerNight" ngDefaultControl>Price per Night: {{pricePerNight}} $</p>
+            <p class="price" [(ngModel)]="totalPrice" ngDefaultControl>Total Price: {{totalPrice}} $</p>
+            <p style="color:rgb(0, 130, 170)">In order to change the dates, just click on the date field! :)</p>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-primary" type="button" (click)="onUpdateBooking()">Update</button>
+            <button class="btn btn-danger" type="button" (click)="onDeleteBooking()">Delete</button>
+
+        </div>
+
+    </div>
+
+</div>

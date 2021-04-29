@@ -1,0 +1,16 @@
+<div class="cat">
+    <div>
+        <app-category-item *ngFor="let category of categories; let i = index;" [index]="i" [category]="category" (oldCategory)="deleteCategory(categories[i])"></app-category-item>
+    </div>
+    <app-category-add *ngIf="tokenService.is_admin"></app-category-add>
+</div>
+<div class="pag">
+    <nav aria-label="...">
+        <ul class="pagination pagination-lg">
+            <li class="page-item" *ngFor="let p of pages; let i = index;">
+                <a class="page-link" [class.page-a]="currentPage === i+1" tabindex="-1" (click)="onGetCategories(i+1)">{{i+1}}</a>
+            </li>
+
+        </ul>
+    </nav>
+</div>

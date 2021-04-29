@@ -1,0 +1,13 @@
+<div class="list-group-item field">
+    <div class="category-field">
+        <div class="text-part">
+            <p [(ngModel)]="roomType" ngDefaultControl>Room Type: {{roomType}} </p>
+            <p [(ngModel)]="sizeType" ngDefaultControl>Room Size: {{sizeType}} </p>
+            <p [(ngModel)]="numberOfBeds" ngDefaultControl>Number Of Beds: {{numberOfBeds}} </p>
+        </div>
+        <div class="image-part">
+            <img [(ngModel)]="imageUrl" ngDefaultControl src="{{imageUrl}}" alt="hotel room">
+        </div>
+    </div>
+    <button class="btn btn-danger" (click)="onDelete()" *ngIf="tokenService.is_admin">Delete</button>
+</div>

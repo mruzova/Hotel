@@ -1,0 +1,20 @@
+.list-auth {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.list-auth ul li {
+    background: rgb(194, 227, 255);
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+a {
+    padding: 0.01vh 5vw;
+    color: darkblue;
+    white-space: nowrap;
+}
